@@ -24,7 +24,7 @@ export default async function TripDetailPage(props: {
     : null;
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-6">
+    <main className="page-shell">
       <TripHeader trip={trip} coverUrl={coverUrl} />
       <TripTabs shareToken={shareToken} active={tab} />
       <div className="mt-4">

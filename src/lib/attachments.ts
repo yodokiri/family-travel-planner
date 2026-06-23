@@ -5,13 +5,22 @@ import type { Attachment } from "@/lib/types";
 /** 予定（itinerary_item_id）ごとの添付枚数マップ。 */
 export async function countImagesByItem(
   tripId: string,
+  itemIds?: string[],
 ): Promise<Record<string, number>> {
+  if (itemIds && itemIds.length === 0) return {};
+
   const supabase = createServiceClient();
-  const { data, error } = await supabase
+  let query = supabase
     .from("attachments")
     .select("itinerary_item_id")
     .eq("trip_id", tripId)
     .not("itinerary_item_id", "is", null);
+
+  if (itemIds) {
+    query = query.in("itinerary_item_id", itemIds);
+  }
+
+  const { data, error } = await query;
   if (error) throw error;
 
   const counts: Record<string, number> = {};

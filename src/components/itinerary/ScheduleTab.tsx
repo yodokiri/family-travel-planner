@@ -16,18 +16,21 @@ export async function ScheduleTab({
   const dates = enumerateDates(trip.start_date, trip.end_date);
   const activeDay = day && dates.includes(day) ? day : dates[0];
   const items = await listItemsByDate(trip.id, activeDay);
-  const imageCounts = await countImagesByItem(trip.id);
+  const imageCounts = await countImagesByItem(
+    trip.id,
+    items.map((item) => item.id),
+  );
 
   return (
     <div>
       <DayTabs shareToken={trip.share_token} dates={dates} activeDay={activeDay} />
 
-      <div className="mt-3 flex justify-end">
+      <div className="mt-4 flex justify-end">
         <Link
           href={`/trips/${trip.share_token}/items/new?day=${activeDay}`}
           className="btn btn-primary"
         >
-          ＋ 予定を追加
+          予定を追加
         </Link>
       </div>
 
@@ -36,7 +39,7 @@ export async function ScheduleTab({
           この日の予定はまだありません。
         </p>
       ) : (
-        <ul className="mt-3 space-y-3">
+        <ol className="mt-3 space-y-3">
           {items.map((it, i) => (
             <ItineraryCard
               key={it.id}
@@ -47,7 +50,7 @@ export async function ScheduleTab({
               canMoveDown={i < items.length - 1}
             />
           ))}
-        </ul>
+        </ol>
       )}
     </div>
   );

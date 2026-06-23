@@ -13,7 +13,7 @@ export function AttachmentCard({
   shareToken: string;
 }) {
   return (
-    <li className="card overflow-hidden">
+    <li className="card overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md">
       {url ? (
         attachment.file_type === "image" ? (
           <a href={url} target="_blank" rel="noopener noreferrer">
@@ -39,8 +39,8 @@ export function AttachmentCard({
           読み込みに失敗しました
         </div>
       )}
-      <div className="p-2">
-        <p className="truncate text-xs">
+      <div className="space-y-1 p-3">
+        <p className="truncate text-sm font-semibold">
           {attachment.caption || attachment.file_name}
         </p>
         <p className="truncate text-xs text-muted">

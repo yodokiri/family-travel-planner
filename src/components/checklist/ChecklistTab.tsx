@@ -38,12 +38,12 @@ export async function ChecklistTab({ trip }: { trip: Trip }) {
         </p>
       ) : (
         <>
-          <p className="text-xs text-muted">
+          <p className="badge-lagoon inline-flex">
             {doneCount} / {items.length} 完了
           </p>
           {orderedCats.map((cat) => (
-            <div key={cat}>
-              <h3 className="text-sm font-semibold text-muted">{cat}</h3>
+            <div key={cat} className="rounded-lg border border-line bg-surface/80 p-3">
+              <h3 className="text-sm font-semibold text-lagoon">{cat}</h3>
               <ul className="mt-1 space-y-1">
                 {groups.get(cat)!.map((it) => (
                   <ChecklistItemRow

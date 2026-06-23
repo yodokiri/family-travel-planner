@@ -11,7 +11,7 @@ export function DayTabs({
   activeDay: string;
 }) {
   return (
-    <div className="flex gap-2 overflow-x-auto py-1">
+    <div className="-mx-1 flex gap-2 overflow-x-auto px-1 py-1">
       {dates.map((d, i) => (
         <Link
           key={d}
@@ -19,8 +19,8 @@ export function DayTabs({
           scroll={false}
           className={
             d === activeDay
-              ? "shrink-0 rounded-full bg-accent px-3 py-1 text-sm text-on-accent"
-              : "shrink-0 rounded-full border border-line bg-surface px-3 py-1 text-sm text-muted"
+              ? "shrink-0 rounded-lg bg-lagoon px-3 py-2 text-sm font-semibold text-on-accent shadow-sm"
+              : "shrink-0 rounded-lg border border-line bg-surface px-3 py-2 text-sm font-semibold text-muted shadow-sm hover:border-lagoon hover:bg-lagoon-soft hover:text-lagoon"
           }
         >
           Day {i + 1}｜{formatDateLabel(d)}

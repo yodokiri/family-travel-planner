@@ -13,7 +13,7 @@ export function DeleteTripButton({ shareToken }: { shareToken: string }) {
         }
       }}
     >
-      <button type="submit" className="btn btn-ghost text-red-700">
+      <button type="submit" className="btn btn-danger">
         削除
       </button>
     </form>

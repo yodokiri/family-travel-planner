@@ -14,12 +14,12 @@ export function ChecklistItemRow({
   const del = deleteChecklistItem.bind(null, shareToken, item.id);
 
   return (
-    <li className="flex items-center gap-2">
+    <li className="flex items-center gap-2 rounded-md px-1 py-1.5">
       <form action={toggle}>
         <button
           type="submit"
           aria-label={item.is_done ? "未完了に戻す" : "完了にする"}
-          className="text-lg leading-none"
+          className="flex size-8 items-center justify-center rounded-md text-lg leading-none text-lagoon hover:bg-lagoon-soft"
         >
           {item.is_done ? "☑" : "☐"}
         </button>
@@ -34,7 +34,7 @@ export function ChecklistItemRow({
         {item.title}
       </span>
       <form action={del}>
-        <button type="submit" className="text-xs text-red-700">
+        <button type="submit" className="rounded-md px-2 py-1 text-xs text-red-700 hover:bg-red-50">
           削除
         </button>
       </form>

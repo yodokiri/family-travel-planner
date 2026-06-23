@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
-/* 旅のしおり風のトーン（温かいクリーム地に濃茶のインク、テラコッタのアクセント） */
+/* 旅先の紙面らしさを残しつつ、海辺の色を少し混ぜた共通トーン。 */
 @theme {
-  --color-paper: #faf6ec;
-  --color-surface: #fffdf7;
-  --color-ink: #3a3530;
-  --color-muted: #8a8175;
-  --color-line: #e7ddc9;
-  --color-accent: #c2683f;
-  --color-accent-soft: #f3e2d6;
+  --color-paper: #f7f2e8;
+  --color-surface: #fffdf8;
+  --color-surface-soft: #f1f7f4;
+  --color-ink: #24302f;
+  --color-muted: #6f7a78;
+  --color-line: #ded7c9;
+  --color-accent: #c65f3d;
+  --color-accent-soft: #f7e3d8;
+  --color-lagoon: #0f766e;
+  --color-lagoon-soft: #dff2ee;
+  --color-sand: #efe1c6;
   --color-on-accent: #ffffff;
 
   --font-sans:
@@ -21,28 +25,49 @@ html {
 }
 
 body {
-  background: var(--color-paper);
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(223, 242, 238, 0.9) 0, rgba(247, 242, 232, 0) 280px),
+    var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
 @layer components {
+  .page-shell {
+    @apply mx-auto min-h-screen max-w-3xl px-4 py-5 sm:px-6 sm:py-7;
+  }
+  .app-topline {
+    @apply flex items-center justify-between gap-3;
+  }
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition;
+    @apply inline-flex min-h-10 items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition;
   }
   .btn-primary {
-    @apply bg-accent text-on-accent hover:opacity-90;
+    @apply bg-lagoon text-on-accent shadow-sm hover:bg-accent;
   }
   .btn-ghost {
-    @apply border border-line bg-surface text-ink hover:bg-accent-soft;
+    @apply border border-line bg-surface text-ink shadow-sm hover:border-lagoon hover:bg-lagoon-soft;
+  }
+  .btn-danger {
+    @apply border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100;
   }
   .card {
-    @apply rounded-xl border border-line bg-surface;
+    @apply rounded-lg border border-line bg-surface shadow-sm;
   }
   .input {
-    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm;
+    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm shadow-sm outline-none transition focus:border-lagoon focus:ring-2 focus:ring-lagoon-soft;
   }
   .badge {
-    @apply rounded bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent;
+    @apply rounded-md bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent;
+  }
+  .badge-lagoon {
+    @apply rounded-md bg-lagoon-soft px-2 py-0.5 text-xs font-semibold text-lagoon;
+  }
+  .section-label {
+    @apply text-xs font-semibold text-muted;
+  }
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-white/70;
   }
 }

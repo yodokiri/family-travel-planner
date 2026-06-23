@@ -5,13 +5,14 @@ import { ShareUrl } from "@/components/trip/ShareUrl";
 
 export function TripListItem({ trip }: { trip: Trip }) {
   return (
-    <li className="card p-4">
+    <li className="card p-4 transition hover:-translate-y-0.5 hover:border-lagoon hover:shadow-md">
       <Link href={`/trips/${trip.share_token}`} className="block">
-        <span className="text-lg font-semibold">{trip.title}</span>
+        <span className="section-label">{trip.destination ?? "旅行"}</span>
+        <span className="mt-1 block text-lg font-semibold">{trip.title}</span>
         {trip.destination ? (
-          <span className="ml-2 text-sm text-muted">{trip.destination}</span>
+          <span className="sr-only">{trip.destination}</span>
         ) : null}
-        <span className="mt-1 block text-sm">
+        <span className="mt-2 block text-sm">
           {formatDateRange(trip.start_date, trip.end_date)}
         </span>
         <span className="mt-1 block text-xs text-muted">

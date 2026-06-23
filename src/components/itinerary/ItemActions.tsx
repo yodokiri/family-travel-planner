@@ -49,7 +49,7 @@ export function ItemActions({
           if (!confirm("この予定を削除しますか？")) e.preventDefault();
         }}
       >
-        <button type="submit" className="btn btn-ghost text-red-700">
+        <button type="submit" className="btn btn-danger">
           削除
         </button>
       </form>

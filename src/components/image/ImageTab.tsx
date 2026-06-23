@@ -21,7 +21,7 @@ export async function ImageTab({ trip }: { trip: Trip }) {
           画像・PDFはまだありません。
         </p>
       ) : (
-        <ul className="mt-4 grid grid-cols-2 gap-3">
+        <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {attachments.map((a) => (
             <AttachmentCard
               key={a.id}

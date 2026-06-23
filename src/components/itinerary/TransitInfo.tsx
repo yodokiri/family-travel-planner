@@ -1,6 +1,8 @@
 export function TransitInfo({ text }: { text: string | null }) {
   if (!text) return null;
   return (
-    <div className="px-3 py-2 text-xs text-muted">↓ 次へ移動：{text}</div>
+    <div className="border-t border-line bg-surface-soft px-4 py-2 text-xs leading-5 text-muted">
+      次へ移動: {text}
+    </div>
   );
 }
